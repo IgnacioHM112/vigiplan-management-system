@@ -14,6 +14,13 @@ function getDiasEnRango(inicio, fin) {
   return dias;
 }
 
+function formatDate(d) {
+  const day = String(d.getDate()).padStart(2, '0');
+  const month = String(d.getMonth() + 1).padStart(2, '0');
+  const year = d.getFullYear();
+  return `${day}/${month}/${year}`;
+}
+
 function mesActual() {
   const ahora = new Date();
   const inicio = new Date(ahora.getFullYear(), ahora.getMonth(), 1);
@@ -206,7 +213,7 @@ export default function Planificacion() {
 
     const encabezados = ['Vigilador / Legajo', ...dias.map((d) => {
       const dt = new Date(d);
-      return `${dt.getDate()}/${dt.getMonth() + 1}`;
+      return formatDate(dt);
     }), 'Total Hs'];
 
     const filas = vigiladores
@@ -326,8 +333,8 @@ export default function Planificacion() {
                   const esFinde = dt.getDay() === 0 || dt.getDay() === 6;
                   return (
                     <th key={d} className={`border-b border-r border-gray-200 px-1.5 py-2.5 text-center font-semibold min-w-[68px] ${esFinde ? 'bg-red-50 text-red-500' : 'bg-gray-50 text-gray-600'}`}>
-                      <div className="text-[10px]">{diaSem}</div>
-                      <div>{dt.getDate()}</div>
+                                      <div className="text-[10px]">{diaSem}</div>
+                                      <div className="text-[10px]">{String(dt.getDate()).padStart(2, '0')}/{String(dt.getMonth() + 1).padStart(2, '0')}</div>
                     </th>
                   );
                 })}

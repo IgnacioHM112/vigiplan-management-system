@@ -22,6 +22,7 @@ app.use('/api/puestos', puestosRoutes);
 app.use('/api/turnos-config', turnosConfigRoutes);
 app.use('/api/vigiladores', vigiladoresRoutes);
 app.use('/api/requerimientos', requerimientosRoutes);
+console.log('asignacionesRoutes:', asignacionesRoutes);
 app.use('/api/asignaciones', asignacionesRoutes);
 app.use('/api/diagnostico', diagnosticoRoutes);
 

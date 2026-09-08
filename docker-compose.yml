@@ -8,7 +8,7 @@ services:
       DB_PORT: ${DB_PORT:-3306}
       DB_USER: ${DB_USER:-root}
       DB_PASSWORD: ${DB_PASSWORD:-root}
-      DB_NAME: ${DB_NAME:-vigiplan}
+      DB_NAME: ${DB_NAME:-brujula_db}
       PORT: ${PORT:-3000}
     depends_on:
       mysql:
@@ -21,7 +21,7 @@ services:
       - "3307:3306"
     environment:
       MYSQL_ROOT_PASSWORD: ${DB_PASSWORD:-root}
-      MYSQL_DATABASE: ${DB_NAME:-vigiplan}
+      MYSQL_DATABASE: ${DB_NAME:-brujula_db}
     volumes:
       - mysql_data:/var/lib/mysql
       - ./backend/db/schema.sql:/docker-entrypoint-initdb.d/schema.sql

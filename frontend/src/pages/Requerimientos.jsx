@@ -9,6 +9,13 @@ const MESES = [
   'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre',
 ];
 
+function formatDate(d) {
+  const day = String(d.getDate()).padStart(2, '0');
+  const month = String(d.getMonth() + 1).padStart(2, '0');
+  const year = d.getFullYear();
+  return `${day}/${month}/${year}`;
+}
+
 export default function Requerimientos() {
   const ahora = new Date();
   const [mes, setMes] = useState(ahora.getMonth() + 1);
@@ -216,7 +223,7 @@ export default function Requerimientos() {
                     {items.map((r) => (
                       <tr key={r.id} className="border-b border-gray-50 hover:bg-gray-50/50 transition-colors">
                         <td className="px-4 py-2.5 text-gray-700">
-                          {new Date(r.fecha).toLocaleDateString('es-AR', { weekday: 'short', day: 'numeric', month: 'short' })}
+                          {formatDate(new Date(r.fecha))}
                         </td>
                         <td className="px-4 py-2.5 text-gray-700">{r.puesto_nombre}</td>
                         <td className="px-4 py-2.5">
